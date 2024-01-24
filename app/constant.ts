@@ -72,4 +72,20 @@ export const cubeData: cubeData[] = [
     isCash: false,
     isMemory: true,
   },
+  {
+    id: 8,
+    name: '메소(윗잠)',
+    price: 3000,
+    isUpperChange: true,
+    isCash: false,
+    isMemory: true,
+  },
+  {
+    id: 9,
+    name: '메소(아랫잠)',
+    price: 3000,
+    isUpperChange: false,
+    isCash: false,
+    isMemory: true,
+  },
 ]
