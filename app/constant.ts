@@ -20,6 +20,13 @@ export interface cubeDataType {
   img: StaticImageData
 }
 
+interface mesoCost {
+  id: number
+  potenLevel: 'rare' | 'epic' | 'unique' | 'legendary'
+  equipLevel: '159' | '199' | '249' | '300'
+  cost: number
+}
+
 export const cubeData: cubeDataType[] = [
   {
     id: 0,
@@ -110,5 +117,104 @@ export const cubeData: cubeDataType[] = [
     cubeType: 'meso',
     isMemory: true,
     img: meso,
+  },
+]
+
+export const mesoCost: mesoCost[] = [
+  {
+    id: 0,
+    potenLevel: 'rare',
+    equipLevel: '159',
+    cost: 4000000,
+  },
+  {
+    id: 1,
+    potenLevel: 'epic',
+    equipLevel: '159',
+    cost: 16000000,
+  },
+  {
+    id: 2,
+    potenLevel: 'unique',
+    equipLevel: '159',
+    cost: 34000000,
+  },
+  {
+    id: 3,
+    potenLevel: 'legendary',
+    equipLevel: '159',
+    cost: 40000000,
+  },
+  {
+    id: 4,
+    potenLevel: 'rare',
+    equipLevel: '199',
+    cost: 42500000,
+  },
+  {
+    id: 5,
+    potenLevel: 'epic',
+    equipLevel: '199',
+    cost: 17000000,
+  },
+  {
+    id: 6,
+    potenLevel: 'unique',
+    equipLevel: '199',
+    cost: 36125000,
+  },
+  {
+    id: 7,
+    potenLevel: 'legendary',
+    equipLevel: '199',
+    cost: 42500000,
+  },
+  {
+    id: 8,
+    potenLevel: 'rare',
+    equipLevel: '249',
+    cost: 4500000,
+  },
+  {
+    id: 9,
+    potenLevel: 'epic',
+    equipLevel: '249',
+    cost: 18000000,
+  },
+  {
+    id: 10,
+    potenLevel: 'unique',
+    equipLevel: '249',
+    cost: 38250000,
+  },
+  {
+    id: 11,
+    potenLevel: 'legendary',
+    equipLevel: '249',
+    cost: 45000000,
+  },
+  {
+    id: 12,
+    potenLevel: 'rare',
+    equipLevel: '300',
+    cost: 5000000,
+  },
+  {
+    id: 13,
+    potenLevel: 'epic',
+    equipLevel: '300',
+    cost: 20000000,
+  },
+  {
+    id: 14,
+    potenLevel: 'unique',
+    equipLevel: '300',
+    cost: 42500000,
+  },
+  {
+    id: 15,
+    potenLevel: 'legendary',
+    equipLevel: '300',
+    cost: 50000000,
   },
 ]
