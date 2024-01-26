@@ -27,6 +27,58 @@ interface mesoCost {
   cost: number
 }
 
+export interface SelectType {
+  id: number
+  value: number
+  lang: string
+}
+
+export const equipSelect = [
+  {
+    id: 0,
+    value: 0,
+    lang: '159 이하',
+  },
+  {
+    id: 1,
+    value: 1,
+    lang: '160 ~ 199',
+  },
+  {
+    id: 2,
+    value: 2,
+    lang: '200 ~ 249',
+  },
+  {
+    id: 3,
+    value: 3,
+    lang: '250 이상',
+  },
+]
+
+export const potenSelect = [
+  {
+    id: 0,
+    value: 0,
+    lang: '레어',
+  },
+  {
+    id: 1,
+    value: 1,
+    lang: '에픽',
+  },
+  {
+    id: 2,
+    value: 2,
+    lang: '유니크',
+  },
+  {
+    id: 3,
+    value: 3,
+    lang: '레전더리',
+  },
+]
+
 export const cubeData: cubeDataType[] = [
   {
     id: 0,

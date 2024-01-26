@@ -6,7 +6,6 @@ const EquipDetail = () => {
     <>
       <div className="mt-3 flex w-full justify-between bg-blue-200 p-5">
         <EquipStatus />
-        <EquipStatus />
       </div>
       <div className="w-full">
         <button className="flex w-1/2  items-center justify-center rounded-lg bg-red-500 py-4">내용물</button>
