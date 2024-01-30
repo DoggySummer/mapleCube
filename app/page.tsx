@@ -1,10 +1,15 @@
+import { connectDB } from './utils/database'
 import { Button, Checkbox, FormControlLabel } from '@mui/material'
-import EquipDetail from './components/meso/equipDetail'
-import PotenSelect from './components/meso/potenSelect'
 import { equipSelect, potenSelect } from './constant'
-import Result from './components/result/result'
 
-export default function Home() {
+import Result from './components/result/result'
+import PotenSelect from './components/meso/potenSelect'
+
+export default async function Home() {
+  const client = await connectDB
+  const db = client.db('mapleItem')
+  const result = await db.collection('epic_weapon').find().toArray()
+  console.log(result)
   return (
     <main className="flex h-screen w-full flex-col justify-center bg-gray-200">
       <div className="mx-auto mb-4 w-[90vw] text-left text-3xl text-gray-600 sm:w-[600px]">잠재능력 시뮬레이터</div>
