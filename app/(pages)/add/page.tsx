@@ -9,10 +9,10 @@ const AddDB = () => {
   const [form, setForm] = useState({
     optionName: '',
     optionType: '',
+    optionSeq: '',
     value: 0,
     possibility: 0,
   })
-  const [optionSeq, setOptionSeq] = useState('0')
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setForm({
@@ -22,7 +22,10 @@ const AddDB = () => {
   }
 
   const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setOptionSeq(e.target.value)
+    setForm({
+      ...form,
+      [e.target.name]: e.target.value,
+    })
   }
 
   const handleSubmit = async () => {
@@ -30,18 +33,22 @@ const AddDB = () => {
       const res = await fetch('http://localhost:3000/api/add', {
         method: 'POST',
         body: JSON.stringify({
-          optionName: form.optionName,
-          optionSeq: optionSeq,
-          optionType: form.optionType,
-          value: form.value,
-          possibility: form.possibility,
+          rank: 'epic',
+          item: 'weapon',
         }),
+        // body: JSON.stringify({
+        //   optionName: form.optionName,
+        //   optionSeq: form.optionSeq,
+        //   optionType: form.optionType,
+        //   value: form.value,
+        //   possibility: form.possibility,
+        // }),
         headers: {
           'content-type': 'application/json',
         },
       })
-      console.log(res)
       if (res.ok) {
+        console.log(res.body)
         alert('다음꺼 해라')
       } else {
         console.log('실패얌')
@@ -50,9 +57,31 @@ const AddDB = () => {
       console.log(error)
     }
   }
+
+  const testSubmit = async () => {
+    try {
+      const res = await fetch('http://localhost:3000/api/add', {
+        method: 'GET',
+        headers: {
+          'content-type': 'application/json',
+        },
+      })
+      if (res.ok) {
+        let body = await res.json()
+        console.log(body)
+        // alert(body[0].optionName)
+        // alert('다음꺼 해라')
+      } else {
+        console.log('실패얌')
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   return (
     <div className="flex flex-col items-center justify-center">
-      <form method="POST" onSubmit={handleSubmit}>
+      <form method="GET" onSubmit={testSubmit}>
         <div className="mt-8 flex items-center justify-center">
           <div className="pr-4 text-xl">이름</div>
           <input className="border px-3 py-3" name="optionName" onChange={handleChange} autoComplete="off" />
@@ -67,7 +96,7 @@ const AddDB = () => {
         </div>
         <div className="mt-8 flex items-center justify-center">
           <div className="pr-4 text-xl">옵션 타입</div>
-          <select className="border px-3 py-3" name="optionSeq" onChange={handleSelectChange} autoComplete="off">
+          <select className="border px-3 py-3" name="optionType" onChange={handleSelectChange} autoComplete="off">
             {optionTypeData.map((item, i) => {
               return (
                 <option value={item} key={i}>
@@ -88,6 +117,9 @@ const AddDB = () => {
         </div>
         <button className="mt-7 block w-36 border bg-blue-600 px-9 py-3 text-white">수락 버튼</button>
       </form>
+      <button className="mt-7 block w-36 border bg-blue-600 px-9 py-3 text-white" onClick={testSubmit}>
+        연습 버튼
+      </button>
     </div>
   )
 }
