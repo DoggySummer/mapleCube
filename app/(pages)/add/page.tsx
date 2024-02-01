@@ -33,7 +33,7 @@ const AddDB = () => {
       const res = await fetch('http://localhost:3000/api/add', {
         method: 'POST',
         body: JSON.stringify({
-          rank: 'epic',
+          rank: 'legendary',
           item: 'weapon',
         }),
         // body: JSON.stringify({
@@ -117,7 +117,7 @@ const AddDB = () => {
         </div>
         <button className="mt-7 block w-36 border bg-blue-600 px-9 py-3 text-white">수락 버튼</button>
       </form>
-      <button className="mt-7 block w-36 border bg-blue-600 px-9 py-3 text-white" onClick={testSubmit}>
+      <button className="mt-7 block w-36 border bg-blue-600 px-9 py-3 text-white" onClick={handleSubmit}>
         연습 버튼
       </button>
     </div>
