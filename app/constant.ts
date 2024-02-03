@@ -1,24 +1,4 @@
-import normalCube01 from '@/public/normalCube01.png'
-import normalCube02 from '@/public/normalCube02.png'
-import normalCube03 from '@/public/normalCube03.png'
-import normalCube04 from '@/public/normalCube04.png'
 
-import cashCube01 from '@/public/cashCube01.png'
-import cashCube02 from '@/public/cashCube02.png'
-import cashCube03 from '@/public/cashCube03.png'
-import cashCube04 from '@/public/cashCube04.png'
-import meso from '@/public/meso.png'
-import { StaticImageData } from 'next/image'
-
-export interface cubeDataType {
-  id: number
-  name: string
-  isUpperChange: boolean
-  cubeType: 'normal' | 'cash' | 'meso'
-  price: number
-  isMemory: boolean
-  img: StaticImageData
-}
 
 interface mesoCost {
   id: number
