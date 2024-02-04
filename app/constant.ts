@@ -1,5 +1,3 @@
-
-
 interface mesoCost {
   id: number
   potenLevel: 'rare' | 'epic' | 'unique' | 'legendary'
@@ -59,98 +57,6 @@ export const potenSelect = [
   },
 ]
 
-export const cubeData: cubeDataType[] = [
-  {
-    id: 0,
-    name: '수상한 큐브',
-    price: 0,
-    isUpperChange: true,
-    cubeType: 'normal',
-    isMemory: false,
-    img: normalCube01,
-  },
-  {
-    id: 1,
-    name: '장인의 큐브',
-    price: 0,
-    isUpperChange: true,
-    cubeType: 'normal',
-    isMemory: false,
-    img: normalCube02,
-  },
-  {
-    id: 2,
-    name: '명장의 큐브',
-    price: 0,
-    isUpperChange: true,
-    cubeType: 'normal',
-    isMemory: false,
-    img: normalCube03,
-  },
-  {
-    id: 3,
-    name: '레드 큐브',
-    price: 900,
-    isUpperChange: true,
-    cubeType: 'cash',
-    isMemory: false,
-    img: cashCube01,
-  },
-  {
-    id: 4,
-    name: '블랙 큐브',
-    price: 1650,
-    isUpperChange: true,
-    cubeType: 'cash',
-    isMemory: true,
-    img: cashCube02,
-  },
-  {
-    id: 5,
-    name: '수상한 에디셔널 큐브',
-    price: 0,
-    isUpperChange: false,
-    cubeType: 'normal',
-    isMemory: false,
-    img: normalCube04,
-  },
-  {
-    id: 6,
-    name: '에디셔널 큐브',
-    price: 1800,
-    isUpperChange: false,
-    cubeType: 'cash',
-    isMemory: false,
-    img: cashCube03,
-  },
-  {
-    id: 7,
-    name: '화이트 에디셔널 큐브',
-    price: 3000,
-    isUpperChange: false,
-    cubeType: 'cash',
-    isMemory: true,
-    img: cashCube04,
-  },
-  {
-    id: 8,
-    name: '메소(윗잠)',
-    price: 3000,
-    isUpperChange: true,
-    cubeType: 'meso',
-    isMemory: true,
-    img: meso,
-  },
-  {
-    id: 9,
-    name: '메소(아랫잠)',
-    price: 3000,
-    isUpperChange: false,
-    cubeType: 'meso',
-    isMemory: true,
-    img: meso,
-  },
-]
 
 export const mesoCost: mesoCost[] = [
   {

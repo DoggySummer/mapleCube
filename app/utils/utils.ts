@@ -4,12 +4,24 @@ export const addCommas = (number: number): string => {
 
 export const numberToKorean = (number: number): string => {
   const numberDigit = Math.floor(Math.log10(number)) + 1
+  let numberStr = ''
   if (5 < numberDigit && numberDigit < 9) {
-    const numberStr: string = number.toString()
+    numberStr = number.toString()
     return numberStr.slice(0, -4) + '만 ' + numberStr.slice(-4)
-  } else if (numberDigit > 8) {
-    const numberStr: string = number.toString()
-    return numberStr.slice(0, -8) + '억 ' + numberStr.slice(2, -4) + '만 ' + numberStr.slice(-4)
+  } else if (8 < numberDigit && numberDigit < 13) {
+    numberStr = number.toString()
+    return numberStr.slice(0, -8) + '억 ' + numberStr.slice(-8, -4) + '만 ' + numberStr.slice(-4)
+  } else if (numberDigit > 12) {
+    numberStr = number.toString()
+    return (
+      numberStr.slice(0, -12) +
+      '조 ' +
+      numberStr.slice(-12, -8) +
+      '억 ' +
+      numberStr.slice(-8, -4) +
+      '만 ' +
+      numberStr.slice(-4)
+    )
   } else {
     return number.toString()
   }

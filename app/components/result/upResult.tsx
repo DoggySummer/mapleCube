@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Result = () => {
+const UpResult = () => {
   return (
     <div className="mt-10">
       <div className="mx-auto mb-4 w-[90vw] text-left text-3xl text-gray-600 sm:w-[600px]">결과</div>
@@ -15,4 +15,4 @@ const Result = () => {
   )
 }
 
-export default Result
+export default UpResult
