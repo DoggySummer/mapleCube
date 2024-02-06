@@ -1,7 +1,8 @@
+export type itemLevel = 0 | 1 | 2 | 3
 interface mesoCost {
   id: number
-  potenLevel: 'rare' | 'epic' | 'unique' | 'legendary'
-  equipLevel: '159' | '199' | '249' | '300'
+  rankLevel: number
+  equipLevel: 0 | 1 | 2 | 3
   cost: number
 }
 
@@ -34,7 +35,7 @@ export const equipSelect = [
   },
 ]
 
-export const potenSelect = [
+export const rankSelect = [
   {
     id: 0,
     value: 0,
@@ -57,102 +58,134 @@ export const potenSelect = [
   },
 ]
 
+export const rankUpPossibility = [
+  {
+    id: 0,
+    possibility: 0.15,
+  },
+  {
+    id: 1,
+    possibility: 0.035,
+  },
+  {
+    id: 2,
+    possibility: 0.014,
+  },
+]
 
 export const mesoCost: mesoCost[] = [
   {
     id: 0,
-    potenLevel: 'rare',
-    equipLevel: '159',
+    rankLevel: 0,
+    equipLevel: 0,
     cost: 4000000,
   },
   {
     id: 1,
-    potenLevel: 'epic',
-    equipLevel: '159',
+    rankLevel: 1,
+    equipLevel: 0,
     cost: 16000000,
   },
   {
     id: 2,
-    potenLevel: 'unique',
-    equipLevel: '159',
+    rankLevel: 2,
+    equipLevel: 0,
     cost: 34000000,
   },
   {
     id: 3,
-    potenLevel: 'legendary',
-    equipLevel: '159',
+    rankLevel: 3,
+    equipLevel: 0,
     cost: 40000000,
   },
   {
     id: 4,
-    potenLevel: 'rare',
-    equipLevel: '199',
+    rankLevel: 0,
+    equipLevel: 1,
     cost: 42500000,
   },
   {
     id: 5,
-    potenLevel: 'epic',
-    equipLevel: '199',
+    rankLevel: 1,
+    equipLevel: 1,
     cost: 17000000,
   },
   {
     id: 6,
-    potenLevel: 'unique',
-    equipLevel: '199',
+    rankLevel: 2,
+    equipLevel: 1,
     cost: 36125000,
   },
   {
     id: 7,
-    potenLevel: 'legendary',
-    equipLevel: '199',
+    rankLevel: 3,
+    equipLevel: 1,
     cost: 42500000,
   },
   {
     id: 8,
-    potenLevel: 'rare',
-    equipLevel: '249',
+    rankLevel: 0,
+    equipLevel: 2,
     cost: 4500000,
   },
   {
     id: 9,
-    potenLevel: 'epic',
-    equipLevel: '249',
+    rankLevel: 1,
+    equipLevel: 2,
     cost: 18000000,
   },
   {
     id: 10,
-    potenLevel: 'unique',
-    equipLevel: '249',
+    rankLevel: 2,
+    equipLevel: 2,
     cost: 38250000,
   },
   {
     id: 11,
-    potenLevel: 'legendary',
-    equipLevel: '249',
+    rankLevel: 3,
+    equipLevel: 2,
     cost: 45000000,
   },
   {
     id: 12,
-    potenLevel: 'rare',
-    equipLevel: '300',
+    rankLevel: 0,
+    equipLevel: 3,
     cost: 5000000,
   },
   {
     id: 13,
-    potenLevel: 'epic',
-    equipLevel: '300',
+    rankLevel: 1,
+    equipLevel: 3,
     cost: 20000000,
   },
   {
     id: 14,
-    potenLevel: 'unique',
-    equipLevel: '300',
+    rankLevel: 2,
+    equipLevel: 3,
     cost: 42500000,
   },
   {
     id: 15,
-    potenLevel: 'legendary',
-    equipLevel: '300',
+    rankLevel: 3,
+    equipLevel: 3,
     cost: 50000000,
+  },
+]
+
+export const hitCeilingCount = [
+  {
+    id: 0,
+    rank: 0,
+    count: 10,
+  },
+  {
+    id: 1,
+    rank: 1,
+    count: 42,
+  },
+  {
+    id: 2,
+    rank: 2,
+    count: 107,
   },
 ]
