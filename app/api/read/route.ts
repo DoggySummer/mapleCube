@@ -1,16 +1,15 @@
-import { NextResponse } from 'next/server'
+import { NextRequest, NextResponse } from 'next/server'
 
 import { connectDB } from '@/app/utils/database'
 import { ObjectId } from 'mongodb'
 
-export async function GET(req: Request) {
+export async function GET(request: NextRequest, context: any) {
+  const searchParams = request.nextUrl.searchParams
+  const query = searchParams.get('query')
+
   const client = await connectDB
   const db = client.db('mapleItem')
-  const data = await req.json()
-  const collectionNameBefore = data.rank + '_' + data.item
-  const collectionNameAfter = data.item + '_' + data.rank
+  const result = await db.collection('epic_weapon').find().toArray()
 
-  const dataList = await db.collection(collectionNameBefore).rename(collectionNameAfter)
-  // console.log(body)
-  return NextResponse.json(dataList)
+  return NextResponse.json(result)
 }
