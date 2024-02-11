@@ -8,7 +8,7 @@ import { SelectType } from '@/app/constant'
 interface RankSelect {
   title: string
   selectMenu: SelectType[]
-  value: number
+  value: number | string
   handle: (event: SelectChangeEvent) => void
 }
 

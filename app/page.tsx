@@ -3,7 +3,7 @@
 import { connectDB } from './utils/database'
 import { Checkbox, FormControlLabel, InputAdornment, SelectChangeEvent, TextField } from '@mui/material'
 
-import { equipSelect, rankSelect } from './constant'
+import { itemLevelSelect, rankSelect } from './constant'
 
 import UpResult from './components/result/upResult'
 import SelectBox from './components/meso/selectBox'
@@ -65,7 +65,7 @@ export default function Home() {
         <div className="ml-2 pb-2 text-xl text-blue-400">아이템 정보</div>
         <div className="flex flex-col sm:flex-row">
           <SelectBox title="현재 잠재능력" selectMenu={rankSelect} handle={handleRankNow} value={rankNow} />
-          <SelectBox title="아이템 레벨" selectMenu={equipSelect} handle={handleItemLevel} value={itemLevel} />
+          <SelectBox title="아이템 레벨" selectMenu={itemLevelSelect} handle={handleItemLevel} value={itemLevel} />
         </div>
         <div className="ml-2 mt-6 pb-2 text-xl text-blue-400">목표 등급</div>
         <div className="flex items-center">
