@@ -45,9 +45,10 @@ const Page = () => {
     setMesoKeep(Number(event.target.value))
   }
 
-  useEffect(()=>{
-    if(itemType)
-  },[itemType])
+  useEffect(() => {
+    if (itemType) {
+    }
+  }, [itemType])
 
   return (
     <main className="flex w-full flex-col justify-center bg-gray-200">
