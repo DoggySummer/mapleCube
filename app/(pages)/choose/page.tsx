@@ -56,7 +56,7 @@ const Page = () => {
       <SideBar />
       <div className="mx-auto mb-4 mt-24 w-[90vw] text-left text-3xl text-gray-600 sm:w-[70vw]">잠재능력 뽑기</div>
       <div className="mx-auto mb-4 w-[90vw] rounded-lg bg-white px-4 py-4 sm:w-[70vw]">
-        <div className="ml-2 pb-2 text-xl text-blue-400">아이템 정보</div>
+        <div className="ml-2 pb-2 text-xl text-blue-400">아이템</div>
         <div className="flex flex-col sm:flex-row">
           <SelectBox title="잠재등급" selectMenu={rankSelect} value={rank} handle={handleRankNow} />
           <SelectBox title="아이템 종류" selectMenu={itemTypeSelect} value={itemType} handle={handleItemType} />
