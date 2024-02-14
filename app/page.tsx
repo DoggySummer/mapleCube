@@ -19,20 +19,18 @@ export default function Home() {
   // const result = await db.collection('epic_weapon').find().toArray()
   // console.log(result)
 
-  const [rankNow, setRankNow] = useState(0)
-  const [rankGoal, setRankGoal] = useState(0)
-  const [itemLevel, setItemLevel] = useState(0)
   const [mesoKeep, setMesoKeep] = useState(0)
   const [isMiracle, setIsMiracle] = useState(false)
-
-  const handleRankNow = (event: SelectChangeEvent) => {
-    setRankNow(Number(event.target.value))
-  }
-  const handleItemLevel = (event: SelectChangeEvent) => {
-    setItemLevel(Number(event.target.value))
-  }
-  const handleRankGoal = (event: SelectChangeEvent) => {
-    setRankGoal(Number(event.target.value))
+  const [form, setForm] = useState({
+    rankNow: 0,
+    rankGoal: 0,
+    itemLevel: 0,
+  })
+  const handleChange = (event: SelectChangeEvent) => {
+    setForm((prev) => ({
+      ...prev,
+      [event.target.name]: Number(event.target.value),
+    }))
   }
   const handleMesoKeep = (event: React.ChangeEvent<HTMLInputElement>) => {
     setMesoKeep(Number(event.target.value))
@@ -42,16 +40,11 @@ export default function Home() {
   }
 
   const onSubmit = () => {
-    const totalData = {
-      rankNow,
-      rankGoal,
-      itemLevel,
-      mesoKeep,
-    }
-    const ceilingMeso = HitCeiling(rankNow, itemLevel, rankGoal, isMiracle)
+    const ceilingMeso = HitCeiling(form.rankNow, form.itemLevel, form.rankGoal, isMiracle)
     const ceilingMesoKor = numberToKorean(ceilingMeso)
-    const expectedRankUpMeso = rankUpExpect(rankNow, itemLevel, rankGoal, isMiracle)
+    const expectedRankUpMeso = rankUpExpect(form.rankNow, form.itemLevel, form.rankGoal, isMiracle)
     const expectedRankUpMesoKor = numberToKorean(expectedRankUpMeso)
+    console.log(form)
     console.log('천장 메소: ' + ceilingMesoKor)
     console.log('기대치 메소: ' + expectedRankUpMesoKor)
   }
@@ -64,12 +57,30 @@ export default function Home() {
       <div className="mx-auto mb-4 w-[90vw] rounded-lg bg-white px-4 py-4 sm:w-[70vw]">
         <div className="ml-2 pb-2 text-xl text-blue-400">아이템 정보</div>
         <div className="flex flex-col sm:flex-row">
-          <SelectBox title="현재 잠재능력" selectMenu={rankSelect} handle={handleRankNow} value={rankNow} />
-          <SelectBox title="아이템 레벨" selectMenu={itemLevelSelect} handle={handleItemLevel} value={itemLevel} />
+          <SelectBox
+            title="현재 잠재능력"
+            selectMenu={rankSelect}
+            handle={handleChange}
+            value={form.rankNow}
+            name="rankNow"
+          />
+          <SelectBox
+            title="아이템 레벨"
+            selectMenu={itemLevelSelect}
+            handle={handleChange}
+            value={form.itemLevel}
+            name="itemLevel"
+          />
         </div>
         <div className="ml-2 mt-6 pb-2 text-xl text-blue-400">목표 등급</div>
         <div className="flex items-center">
-          <SelectBox title="목표 잠재능력" selectMenu={rankSelect} handle={handleRankGoal} value={rankGoal} />
+          <SelectBox
+            title="목표 잠재능력"
+            selectMenu={rankSelect}
+            handle={handleChange}
+            value={form.rankGoal}
+            name="rankGoal"
+          />
           <FormControlLabel
             control={<Checkbox onChange={handleIsMiracle} />}
             label="미라클 타임"

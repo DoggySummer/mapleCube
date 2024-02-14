@@ -4,7 +4,18 @@ import Header from '@/app/components/header/header'
 import SelectBox from '@/app/components/meso/selectBox'
 import SideBar from '@/app/components/sideBar/sideBar'
 import React, { FormEvent, useEffect, useState } from 'react'
-import { itemLevelSelect, itemOptionSelect, itemTypeSelect, rankSelect } from '../../constant'
+import {
+  itemLevelSelect,
+  itemOptionAccessory,
+  itemOptionCommon,
+  itemOptionEmblem,
+  itemOptionGlove,
+  itemOptionSelect,
+  itemOptionTop,
+  itemOptionWeapon,
+  itemTypeSelect,
+  rankSelect,
+} from '../../constant'
 import { InputAdornment, SelectChangeEvent, TextField } from '@mui/material'
 import { numberToKorean } from '@/app/utils/utils'
 import UpResult from '@/app/components/result/upResult'
@@ -23,32 +34,92 @@ const Page = () => {
   const [optionThird, setOptionThird] = useState(0)
   const [mesoKeep, setMesoKeep] = useState(0)
 
-  const handleRankNow = (event: SelectChangeEvent) => {
-    setRank(Number(event.target.value))
+  const [form, setForm] = useState({
+    rank: 0,
+    itemType: 0,
+    itemLevel: 0,
+    optionFirst: 0,
+    optionSecond: 0,
+    optionThird: 0,
+  })
+  const [itemOption, setItemOption] = useState([...itemOptionCommon, ...itemOptionWeapon])
+
+  const handleChange = (event: SelectChangeEvent) => {
+    setForm((prev) => ({
+      ...prev,
+      [event.target.name]: event.target.value,
+    }))
   }
+
   const handleItemType = (event: SelectChangeEvent) => {
-    setItemType(event.target.value)
+    setForm((prev) => ({
+      ...prev,
+      [event.target.name]: event.target.value,
+    }))
+    const itemType = form.itemType
+    switch (itemType) {
+      case 0:
+      case 2:
+      case 3:
+      case 4:
+        setItemOption([...itemOptionCommon, ...itemOptionWeapon])
+        break
+      case 1:
+        setItemOption([...itemOptionCommon, ...itemOptionEmblem])
+        break
+      case 5:
+        setItemOption([...itemOptionCommon, ...itemOptionTop])
+        break
+      case 8:
+        setItemOption([...itemOptionCommon, ...itemOptionGlove])
+        break
+      case 12:
+      case 13:
+      case 14:
+      case 15:
+      case 16:
+        setItemOption([...itemOptionCommon, ...itemOptionAccessory])
+        break
+      default:
+        setItemOption([...itemOptionCommon])
+        break
+    }
   }
-  const handleItemLevel = (event: SelectChangeEvent) => {
-    setItemLevel(Number(event.target.value))
-  }
-  const handleOptionFirst = (event: SelectChangeEvent) => {
-    setOptionFirst(Number(event.target.value))
-  }
-  const handleOptionSecond = (event: SelectChangeEvent) => {
-    setOptionSecond(Number(event.target.value))
-  }
-  const handleOptionThird = (event: SelectChangeEvent) => {
-    setOptionThird(Number(event.target.value))
-  }
+
   const handleMesoKeep = (event: React.ChangeEvent<HTMLInputElement>) => {
     setMesoKeep(Number(event.target.value))
   }
 
   useEffect(() => {
-    if (itemType) {
+    const itemType = form.itemType
+    switch (itemType) {
+      case 0:
+      case 2:
+      case 3:
+      case 4:
+        setItemOption([...itemOptionCommon, ...itemOptionWeapon])
+        break
+      case 1:
+        setItemOption([...itemOptionCommon, ...itemOptionEmblem])
+        break
+      case 5:
+        setItemOption([...itemOptionCommon, ...itemOptionTop])
+        break
+      case 8:
+        setItemOption([...itemOptionCommon, ...itemOptionGlove])
+        break
+      case 12:
+      case 13:
+      case 14:
+      case 15:
+      case 16:
+        setItemOption([...itemOptionCommon, ...itemOptionAccessory])
+        break
+      default:
+        setItemOption([...itemOptionCommon])
+        break
     }
-  }, [itemType])
+  }, [form])
 
   return (
     <main className="flex w-full flex-col justify-center bg-gray-200">
@@ -58,13 +129,31 @@ const Page = () => {
       <div className="mx-auto mb-4 w-[90vw] rounded-lg bg-white px-4 py-4 sm:w-[70vw]">
         <div className="ml-2 pb-2 text-xl text-blue-400">아이템</div>
         <div className="flex flex-col sm:flex-row">
-          <SelectBox title="잠재등급" selectMenu={rankSelect} value={rank} handle={handleRankNow} />
-          <SelectBox title="아이템 종류" selectMenu={itemTypeSelect} value={itemType} handle={handleItemType} />
-          <SelectBox title="아이템 레벨" selectMenu={itemLevelSelect} value={itemLevel} handle={handleItemLevel} />
+          <SelectBox title="잠재등급" selectMenu={rankSelect} value={form.rank} handle={handleChange} name="rank" />
+          <SelectBox
+            title="아이템 종류"
+            selectMenu={itemTypeSelect}
+            value={form.itemType}
+            handle={handleChange}
+            name="itemType"
+          />
+          <SelectBox
+            title="아이템 레벨"
+            selectMenu={itemLevelSelect}
+            value={form.itemLevel}
+            handle={handleChange}
+            name="itemLevel"
+          />
         </div>
         <div className="ml-2 mt-6 pb-2 text-xl text-blue-400">목표 옵션</div>
         <div className="flex items-center">
-          <SelectBox title="옵션" selectMenu={itemOptionSelect} value={optionFirst} handle={handleOptionFirst} />
+          <SelectBox
+            title="옵션"
+            selectMenu={itemOption}
+            value={form.optionFirst}
+            handle={handleChange}
+            name="optionFirst"
+          />
           <TextField
             autoComplete="off"
             label=""

@@ -7,7 +7,6 @@ interface mesoCost {
 }
 
 export interface SelectType {
-  id: number
   value: number
   lang: string
 }
@@ -148,6 +147,103 @@ export const itemTypeSelect = [
     id: 17,
     value: 17,
     lang: '기계심장',
+  },
+]
+
+export const itemOptionCommon = [
+  {
+    value: 0,
+    lang: '없음',
+  },
+  {
+    value: 1,
+    lang: 'STR %',
+  },
+  {
+    value: 2,
+    lang: 'DEX %',
+  },
+  {
+    value: 3,
+    lang: 'INT %',
+  },
+  {
+    value: 4,
+    lang: 'LUK %',
+  },
+  {
+    value: 5,
+    lang: '올스탯 %',
+  },
+  {
+    value: 6,
+    lang: '최대 HP %',
+  },
+]
+
+export const itemOptionWeapon = [
+  {
+    value: 7,
+    lang: '공격력 %',
+  },
+  {
+    value: 8,
+    lang: '마력 %',
+  },
+  {
+    value: 9,
+    lang: '방어력 무시 %',
+  },
+  {
+    value: 10,
+    lang: '보스 공격력 %',
+  },
+  {
+    value: 11,
+    lang: '데미지 %',
+  },
+]
+
+export const itemOptionEmblem = [
+  {
+    value: 7,
+    lang: '공격력 %',
+  },
+  {
+    value: 8,
+    lang: '마력 %',
+  },
+  {
+    value: 9,
+    lang: '방어력 무시 %',
+  },
+  {
+    value: 11,
+    lang: '데미지 %',
+  },
+]
+
+export const itemOptionGlove = [
+  {
+    value: 12,
+    lang: '크리티컬 데미지 %',
+  },
+]
+export const itemOptionTop = [
+  {
+    value: 13,
+    lang: '재사용 대기시간 초',
+  },
+]
+
+export const itemOptionAccessory = [
+  {
+    value: 14,
+    lang: '메소 획득량 %',
+  },
+  {
+    value: 15,
+    lang: '아이템 드롭률 %',
   },
 ]
 
