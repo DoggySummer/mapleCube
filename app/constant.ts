@@ -150,178 +150,126 @@ export const itemTypeSelect = [
   },
 ]
 
-export const itemOptionCommon = [
+interface itemOption {
+  value: number
+  lang: string
+  type: string
+}
+
+export const itemOptionCommon: itemOption[] = [
   {
     value: 0,
     lang: '없음',
+    type: '잡옵',
   },
   {
     value: 1,
     lang: 'STR %',
+    type: 'STR',
   },
   {
     value: 2,
     lang: 'DEX %',
+    type: 'DEX',
   },
   {
     value: 3,
     lang: 'INT %',
+    type: 'INT',
   },
   {
     value: 4,
     lang: 'LUK %',
+    type: 'LUK',
   },
   {
     value: 5,
     lang: '올스탯 %',
+    type: '올스탯',
   },
   {
     value: 6,
     lang: '최대 HP %',
+    type: 'HP',
   },
 ]
 
-export const itemOptionWeapon = [
+export const itemOptionWeapon: itemOption[] = [
   {
     value: 7,
     lang: '공격력 %',
+    type: '공격력',
   },
   {
     value: 8,
     lang: '마력 %',
+    type: '마력',
   },
   {
     value: 9,
-    lang: '방어력 무시 %',
+    lang: '방어율 무시 %',
+    type: '몬스터',
   },
   {
     value: 10,
     lang: '보스 공격력 %',
+    type: '보스',
   },
   {
     value: 11,
     lang: '데미지 %',
+    type: '데미지',
   },
 ]
 
-export const itemOptionEmblem = [
+export const itemOptionEmblem: itemOption[] = [
   {
     value: 7,
     lang: '공격력 %',
+    type: '공격력',
   },
   {
     value: 8,
     lang: '마력 %',
+    type: '마력',
   },
   {
     value: 9,
-    lang: '방어력 무시 %',
+    lang: '방어율 무시 %',
+    type: '몬스터',
   },
   {
     value: 11,
     lang: '데미지 %',
+    type: '데미지',
   },
 ]
 
-export const itemOptionGlove = [
+export const itemOptionGlove: itemOption[] = [
   {
     value: 12,
     lang: '크리티컬 데미지 %',
+    type: '크뎀',
   },
 ]
-export const itemOptionTop = [
+export const itemOptionTop: itemOption[] = [
   {
     value: 13,
     lang: '재사용 대기시간 초',
+    type: '쿨감',
   },
 ]
 
-export const itemOptionAccessory = [
+export const itemOptionAccessory: itemOption[] = [
   {
     value: 14,
     lang: '메소 획득량 %',
+    type: '메소',
   },
   {
     value: 15,
     lang: '아이템 드롭률 %',
-  },
-]
-
-export const itemOptionSelect = [
-  {
-    id: 0,
-    value: 0,
-    lang: '없음',
-  },
-  {
-    id: 1,
-    value: 1,
-    lang: 'STR %',
-  },
-  {
-    id: 2,
-    value: 2,
-    lang: 'DEX %',
-  },
-  {
-    id: 3,
-    value: 3,
-    lang: 'INT %',
-  },
-  {
-    id: 4,
-    value: 4,
-    lang: 'LUK %',
-  },
-  {
-    id: 4,
-    value: 4,
-    lang: '올스탯 %',
-  },
-  {
-    id: 5,
-    value: 5,
-    lang: '최대 HP %',
-  },
-  {
-    id: 6,
-    value: 6,
-    lang: '공격력 %',
-  },
-  {
-    id: 7,
-    value: 7,
-    lang: '마력 %',
-  },
-  {
-    id: 8,
-    value: 8,
-    lang: '몬스터 방어율 무시 %',
-  },
-  {
-    id: 9,
-    value: 9,
-    lang: '데미지 %',
-  },
-  {
-    id: 10,
-    value: 10,
-    lang: '재사용 대기시간 초',
-  },
-  {
-    id: 11,
-    value: 11,
-    lang: '크리티컬 데미지 %',
-  },
-  {
-    id: 12,
-    value: 12,
-    lang: '메소 획득량 %',
-  },
-  {
-    id: 13,
-    value: 13,
-    lang: '아이템 드롭률 %',
+    type: '아이템',
   },
 ]
 

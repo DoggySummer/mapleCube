@@ -3,14 +3,13 @@
 import Header from '@/app/components/header/header'
 import SelectBox from '@/app/components/meso/selectBox'
 import SideBar from '@/app/components/sideBar/sideBar'
-import React, { FormEvent, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import {
   itemLevelSelect,
   itemOptionAccessory,
   itemOptionCommon,
   itemOptionEmblem,
   itemOptionGlove,
-  itemOptionSelect,
   itemOptionTop,
   itemOptionWeapon,
   itemTypeSelect,
@@ -22,25 +21,22 @@ import UpResult from '@/app/components/result/upResult'
 import Footer from '@/app/components/footer/footer'
 
 const Page = () => {
-  async function onSubmit(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault()
+  const onSubmit = () => {
+    console.log(form)
   }
 
-  const [rank, setRank] = useState(0)
-  const [itemType, setItemType] = useState('')
-  const [itemLevel, setItemLevel] = useState(0)
-  const [optionFirst, setOptionFirst] = useState(0)
-  const [optionSecond, setOptionSecond] = useState(0)
-  const [optionThird, setOptionThird] = useState(0)
   const [mesoKeep, setMesoKeep] = useState(0)
 
   const [form, setForm] = useState({
     rank: 0,
     itemType: 0,
     itemLevel: 0,
-    optionFirst: 0,
-    optionSecond: 0,
-    optionThird: 0,
+    optionTypeFirst: 0,
+    optionTypeSecond: 0,
+    optionTypeThird: 0,
+    optionValueFirst: 0,
+    optionValueSecond: 0,
+    optionValueThird: 0,
   })
   const [itemOption, setItemOption] = useState([...itemOptionCommon, ...itemOptionWeapon])
 
@@ -51,39 +47,11 @@ const Page = () => {
     }))
   }
 
-  const handleItemType = (event: SelectChangeEvent) => {
+  const handleOptionValue = (event: React.ChangeEvent<HTMLInputElement>) => {
     setForm((prev) => ({
       ...prev,
-      [event.target.name]: event.target.value,
+      [event.target.name]: Number(event.target.value),
     }))
-    const itemType = form.itemType
-    switch (itemType) {
-      case 0:
-      case 2:
-      case 3:
-      case 4:
-        setItemOption([...itemOptionCommon, ...itemOptionWeapon])
-        break
-      case 1:
-        setItemOption([...itemOptionCommon, ...itemOptionEmblem])
-        break
-      case 5:
-        setItemOption([...itemOptionCommon, ...itemOptionTop])
-        break
-      case 8:
-        setItemOption([...itemOptionCommon, ...itemOptionGlove])
-        break
-      case 12:
-      case 13:
-      case 14:
-      case 15:
-      case 16:
-        setItemOption([...itemOptionCommon, ...itemOptionAccessory])
-        break
-      default:
-        setItemOption([...itemOptionCommon])
-        break
-    }
   }
 
   const handleMesoKeep = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -91,6 +59,13 @@ const Page = () => {
   }
 
   useEffect(() => {
+    setForm((prev) => ({
+      ...prev,
+      optionTypeFirst: 0,
+      optionTypeSecond: 0,
+      optionTypeThird: 0,
+    }))
+
     const itemType = form.itemType
     switch (itemType) {
       case 0:
@@ -119,7 +94,7 @@ const Page = () => {
         setItemOption([...itemOptionCommon])
         break
     }
-  }, [form])
+  }, [form.itemType])
 
   return (
     <main className="flex w-full flex-col justify-center bg-gray-200">
@@ -150,18 +125,54 @@ const Page = () => {
           <SelectBox
             title="옵션"
             selectMenu={itemOption}
-            value={form.optionFirst}
+            value={form.optionTypeFirst}
             handle={handleChange}
-            name="optionFirst"
+            name="optionTypeFirst"
           />
           <TextField
             autoComplete="off"
             label=""
             type="number"
-            onChange={handleMesoKeep}
+            onChange={handleOptionValue}
             helperText={' '}
-            value={1}
-            disabled={true}
+            value={form.optionTypeFirst === 0 ? 0 : form.optionValueFirst}
+            name="optionValueFirst"
+          />
+        </div>
+        <div className="flex items-center">
+          <SelectBox
+            title="옵션"
+            selectMenu={itemOption}
+            value={form.optionTypeSecond}
+            handle={handleChange}
+            name="optionTypeSecond"
+          />
+          <TextField
+            autoComplete="off"
+            label=""
+            type="number"
+            onChange={handleOptionValue}
+            helperText={' '}
+            value={form.optionTypeFirst === 0 ? 0 : form.optionValueSecond}
+            name="optionValueSecond"
+          />
+        </div>
+        <div className="flex items-center">
+          <SelectBox
+            title="옵션"
+            selectMenu={itemOption}
+            value={form.optionTypeThird}
+            handle={handleChange}
+            name="optionTypeThird"
+          />
+          <TextField
+            autoComplete="off"
+            label=""
+            type="number"
+            onChange={handleOptionValue}
+            helperText={' '}
+            value={form.optionTypeFirst === 0 ? 0 : form.optionValueThird}
+            name="optionValueThird"
           />
         </div>
         <div className="ml-2 mt-6 pb-2 text-xl text-blue-400">보유 메소 (선택)</div>
@@ -175,7 +186,9 @@ const Page = () => {
           onChange={handleMesoKeep}
           helperText={numberToKorean(mesoKeep) + '메소'}
         />
-        <button className="mt-5 w-[100%] bg-blue-400 py-2 text-white">계산하기</button>
+        <button className="mt-5 w-[100%] bg-blue-400 py-2 text-white" onClick={onSubmit}>
+          계산하기
+        </button>
       </div>
       <UpResult />
       <Footer />
