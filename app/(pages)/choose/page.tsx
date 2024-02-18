@@ -10,24 +10,66 @@ import {
   itemOptionCommon,
   itemOptionEmblem,
   itemOptionGlove,
-  itemOptionTop,
+  itemOptionHat,
   itemOptionWeapon,
   itemTypeSelect,
   rankSelect,
 } from '../../constant'
 import { InputAdornment, SelectChangeEvent, TextField } from '@mui/material'
 import { numberToKorean } from '@/app/utils/utils'
-import UpResult from '@/app/components/result/upResult'
 import Footer from '@/app/components/footer/footer'
+import ChooseResult from '@/app/components/result/chooseResult'
 
 const Page = () => {
-  const onSubmit = () => {
-    console.log(form)
+  const rankSelectEdited = rankSelect.filter((item) => item.value > 0)
+
+  const itemOptionTotal = [
+    ...itemOptionCommon,
+    ...itemOptionWeapon,
+    ...itemOptionEmblem,
+    ...itemOptionAccessory,
+    ...itemOptionGlove,
+    ...itemOptionHat,
+  ]
+  const onSubmit = async () => {
+    if (form.optionValueFirst === 0 && form.optionValueSecond === 0 && form.optionValueThird === 0) {
+      alert('옵션을 하나 이상 선택해 주세요')
+      return
+    }
+
+    const firstOptionType = itemOptionTotal.filter((item) => item.value === form.optionTypeFirst)[0]
+    const secondOptionType = itemOptionTotal.filter((item) => item.value === form.optionTypeSecond)[0]
+    const thirdOptionType = itemOptionTotal.filter((item) => item.value === form.optionTypeThird)[0]
+
+    const url = `http://localhost:3000/api/read?
+    itemlevel=${form.itemLevel}
+    &itemtype=${form.itemType}
+    &rank=${form.rank}
+    &itemfirst=${firstOptionType.type}
+    &itemsecond=${secondOptionType.type}
+    &itemthird=${thirdOptionType.type}
+    &firstvalue=${form.optionValueFirst}
+    &secondvalue=${form.optionValueSecond}
+    &thirdvalue=${form.optionValueThird}
+    &meso=${mesoKeep}
+    `
+
+    try {
+      const response = await fetch(url, {
+        method: 'GET',
+      })
+      if (response) {
+        const data = await response.json()
+        console.log(data)
+      }
+    } catch (error) {
+      console.log(error)
+    }
   }
   const [mesoKeep, setMesoKeep] = useState(0)
 
   const [form, setForm] = useState({
-    rank: 0,
+    rank: 1,
     itemType: 0,
     itemLevel: 0,
     optionTypeFirst: 0,
@@ -77,7 +119,7 @@ const Page = () => {
         setItemOption([...itemOptionCommon, ...itemOptionEmblem])
         break
       case 5:
-        setItemOption([...itemOptionCommon, ...itemOptionTop])
+        setItemOption([...itemOptionCommon, ...itemOptionHat])
         break
       case 8:
         setItemOption([...itemOptionCommon, ...itemOptionGlove])
@@ -99,11 +141,17 @@ const Page = () => {
     <main className="flex w-full flex-col justify-center bg-gray-200">
       <Header />
       <SideBar />
-      <div className="mx-auto mb-4 mt-24 w-[90vw] text-left text-3xl text-gray-600 sm:w-[70vw]">잠재능력 뽑기</div>
-      <div className="mx-auto mb-4 w-[90vw] rounded-lg bg-white px-4 py-4 sm:w-[70vw]">
+      <div className="mx-auto mb-4 mt-24 w-[90vw] text-left text-3xl text-gray-600 sm:w-[800px]">잠재능력 뽑기</div>
+      <div className="mx-auto mb-4 w-[90vw] rounded-lg bg-white px-4 py-4 sm:w-[800px]">
         <div className="ml-2 pb-2 text-xl text-blue-400">아이템</div>
         <div className="flex flex-col sm:flex-row">
-          <SelectBox title="잠재등급" selectMenu={rankSelect} value={form.rank} handle={handleChange} name="rank" />
+          <SelectBox
+            title="잠재등급"
+            selectMenu={rankSelectEdited}
+            value={form.rank}
+            handle={handleChange}
+            name="rank"
+          />
           <SelectBox
             title="아이템 종류"
             selectMenu={itemTypeSelect}
@@ -189,7 +237,7 @@ const Page = () => {
           계산하기
         </button>
       </div>
-      <UpResult />
+      <ChooseResult />
       <Footer />
     </main>
   )

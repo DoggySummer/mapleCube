@@ -39,21 +39,25 @@ export const rankSelect = [
     id: 0,
     value: 0,
     lang: '레어',
+    eng: 'rare',
   },
   {
     id: 1,
     value: 1,
     lang: '에픽',
+    eng: 'epic',
   },
   {
     id: 2,
     value: 2,
     lang: '유니크',
+    eng: 'unique',
   },
   {
     id: 3,
     value: 3,
     lang: '레전더리',
+    eng: 'legendary',
   },
 ]
 
@@ -62,91 +66,109 @@ export const itemTypeSelect = [
     id: 0,
     value: 0,
     lang: '무기',
+    eng: 'weapon',
   },
   {
     id: 1,
     value: 1,
     lang: '엠블렘',
+    eng: 'emblem',
   },
   {
     id: 2,
     value: 2,
     lang: '보조무기(포스실드, 소울링 제외)',
+    eng: 'subWeapon',
   },
   {
     id: 3,
     value: 3,
     lang: '포스실드, 소울링',
+    eng: 'forceShield',
   },
   {
     id: 4,
     value: 4,
     lang: '방패',
+    eng: 'shield',
   },
   {
     id: 5,
     value: 5,
     lang: '모자',
+    eng: 'hat',
   },
   {
     id: 6,
     value: 6,
     lang: '상의',
+    eng: 'top',
   },
   {
     id: 7,
     value: 7,
     lang: '신발',
+    eng: 'shoes',
   },
   {
     id: 8,
     value: 8,
     lang: '장갑',
+    eng: 'glove',
   },
   {
     id: 9,
     value: 9,
     lang: '망토',
+    eng: 'cloak',
   },
   {
     id: 10,
     value: 10,
     lang: '벨트',
+    eng: 'belt',
   },
   {
     id: 11,
     value: 11,
     lang: '어깨장식',
+    eng: 'shoulder',
   },
   {
     id: 12,
     value: 12,
     lang: '얼굴장식',
+    eng: 'accessory',
   },
   {
     id: 13,
     value: 13,
     lang: '눈장식',
+    eng: 'accessory',
   },
   {
     id: 14,
     value: 14,
     lang: '귀고리',
+    eng: 'accessory',
   },
   {
     id: 15,
     value: 15,
     lang: '반지',
+    eng: 'accessory',
   },
   {
     id: 16,
     value: 16,
     lang: '팬던트',
+    eng: 'accessory',
   },
   {
     id: 17,
     value: 17,
     lang: '기계심장',
+    eng: 'heart',
   },
 ]
 
@@ -252,7 +274,7 @@ export const itemOptionGlove: itemOption[] = [
     type: '크뎀',
   },
 ]
-export const itemOptionTop: itemOption[] = [
+export const itemOptionHat: itemOption[] = [
   {
     value: 13,
     lang: '재사용 대기시간 초',
