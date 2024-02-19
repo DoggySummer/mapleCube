@@ -1,4 +1,3 @@
-export type itemLevel = 0 | 1 | 2 | 3
 interface mesoCost {
   id: number
   rankLevel: number
@@ -424,5 +423,43 @@ export const hitCeilingCount = [
     id: 2,
     rank: 2,
     count: 107,
+  },
+]
+
+export const selectOptionValue = [
+  {
+    id: 0,
+    value: 3,
+    def: '에픽 아래쪽 옵션에 사용',
+  },
+  {
+    id: 1,
+    value: 6,
+    def: '에픽 윗줄 + 유니크 아랫줄 + 유니크 올스탯',
+  },
+  {
+    id: 2,
+    value: 9,
+    def: '유니크 윗줄 + 레전 아랫줄 ',
+  },
+  {
+    id: 3,
+    value: 12,
+    def: '레전 윗줄',
+  },
+  {
+    id: 4,
+    value: 35,
+    def: '방무 + 보공',
+  },
+  {
+    id: 5,
+    value: 40,
+    def: '방무 + 보공',
+  },
+  {
+    id: 6,
+    value: 20,
+    def: '매획아획',
   },
 ]

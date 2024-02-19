@@ -41,30 +41,31 @@ const Page = () => {
     const secondOptionType = itemOptionTotal.filter((item) => item.value === form.optionTypeSecond)[0]
     const thirdOptionType = itemOptionTotal.filter((item) => item.value === form.optionTypeThird)[0]
 
-    const url = `http://localhost:3000/api/read?
-    itemlevel=${form.itemLevel}
-    &itemtype=${form.itemType}
-    &rank=${form.rank}
-    &itemfirst=${firstOptionType.type}
-    &itemsecond=${secondOptionType.type}
-    &itemthird=${thirdOptionType.type}
-    &firstvalue=${form.optionValueFirst}
-    &secondvalue=${form.optionValueSecond}
-    &thirdvalue=${form.optionValueThird}
-    &meso=${mesoKeep}
-    `
+    const url =
+      `http://localhost:3000/api/read?` +
+      `itemlevel=${form.itemLevel}` +
+      `&itemtype=${form.itemType}` +
+      `&rank=${form.rank}` +
+      `&itemfirst=${firstOptionType.type}` +
+      `&itemsecond=${secondOptionType.type}` +
+      `&itemthird=${thirdOptionType.type}` +
+      `&firstvalue=${form.optionValueFirst}` +
+      `&secondvalue=${form.optionValueSecond}` +
+      `&thirdvalue=${form.optionValueThird}` +
+      `&meso=${mesoKeep}`
 
-    try {
-      const response = await fetch(url, {
-        method: 'GET',
-      })
-      if (response) {
-        const data = await response.json()
-        console.log(data)
-      }
-    } catch (error) {
-      console.log(error)
-    }
+    console.log(url)
+    // try {
+    //   const response = await fetch(url, {
+    //     method: 'GET',
+    //   })
+    //   if (response) {
+    //     const data = await response.json()
+    //     console.log(data)
+    //   }
+    // } catch (error) {
+    //   console.log(error)
+    // }
   }
   const [mesoKeep, setMesoKeep] = useState(0)
 

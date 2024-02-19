@@ -16,9 +16,9 @@ export async function GET(request: NextRequest) {
   const itemTypeNumber = searchParams.get('itemtype')
   const itemType = itemTypeSelect[Number(itemTypeNumber)].eng
 
-  const optionTypeFirst = searchParams.get('itemfirst')?.trim()
-  const optionTypeSecond = searchParams.get('itemsecond')?.trim()
-  const optionTypeThird = searchParams.get('itemthird')?.trim()
+  const optionTypeFirst = searchParams.get('itemfirst')
+  const optionTypeSecond = searchParams.get('itemsecond')
+  const optionTypeThird = searchParams.get('itemthird')
 
   const client = await connectDB
   const db = client.db('mapleItem')
