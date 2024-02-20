@@ -33,7 +33,7 @@ const Page = () => {
   ]
   const onSubmit = async () => {
     if (form.optionValueFirst === 0 && form.optionValueSecond === 0 && form.optionValueThird === 0) {
-      alert('옵션을 하나 이상 선택해 주세요')
+      alert('옵션을 하나 이상 선택해 주시기바랍니다')
       return
     }
 
