@@ -57,7 +57,7 @@ export const HitCeiling = (rankNow: number, itemLevel: Number, rankGoal: number,
   return mesoCostTotal
 }
 
-/** 일반적인 기댓값 */
+/** 기댓값 - 등급 업 */
 export const rankUpExpect = (rankNow: number, itemLevel: Number, rankGoal: number, isMiracle: boolean) => {
   let mesoCostEach
   let rankStatus = rankNow
@@ -88,4 +88,8 @@ export const fundToSuccessPossibility = (possibility: number, costPerTry: number
   const cumulativeFailureProbability = Math.pow(1 - possibility, tries)
   const successPercentage = (1 - cumulativeFailureProbability) * 100
   return successPercentage.toFixed(2)
+}
+
+export const optionGetExpect = (possibility: number, costPerTry: number) => {
+  return possibility * costPerTry
 }

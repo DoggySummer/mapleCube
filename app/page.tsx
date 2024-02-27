@@ -11,14 +11,9 @@ import Header from './components/header/header'
 import SideBar from './components/sideBar/sideBar'
 import Footer from './components/footer/footer'
 import { useState } from 'react'
-import { HitCeiling, numberToKorean, rankUpExpect } from './utils/utils'
+import { HitCeiling, fundToSuccessPossibility, numberToKorean, rankUpExpect } from './utils/utils'
 
 export default function Home() {
-  // const client = await connectDB
-  // const db = client.db('mapleItem')
-  // const result = await db.collection('epic_weapon').find().toArray()
-  // console.log(result)
-
   const [mesoKeep, setMesoKeep] = useState(0)
   const [isMiracle, setIsMiracle] = useState(false)
   const [form, setForm] = useState({
@@ -47,14 +42,15 @@ export default function Home() {
     console.log(form)
     console.log('천장 메소: ' + ceilingMesoKor)
     console.log('기대치 메소: ' + expectedRankUpMesoKor)
+    console.log('보유 매소 대비 확률: ')
   }
 
   return (
     <main className="flex w-full flex-col justify-center bg-gray-200">
       <Header />
       <SideBar />
-      <div className="mx-auto mb-4 mt-24 w-[90vw] text-left text-3xl text-gray-600 sm:w-[70vw]">등급 업</div>
-      <div className="mx-auto mb-4 w-[90vw] rounded-lg bg-white px-4 py-4 sm:w-[70vw]">
+      <div className="mx-auto mb-4 mt-24 w-[90vw] text-left text-3xl text-gray-600 sm:w-[800px]">등급 업</div>
+      <div className="mx-auto mb-4 w-[90vw] rounded-lg bg-white px-4 py-4 sm:w-[800px]">
         <div className="ml-2 pb-2 text-xl text-blue-400">아이템 정보</div>
         <div className="flex flex-col sm:flex-row">
           <SelectBox
