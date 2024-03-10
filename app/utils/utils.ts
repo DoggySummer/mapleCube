@@ -1,4 +1,4 @@
-import { hitCeilingCount, itemLevel, mesoCost, rankUpPossibility } from '../constant'
+import { hitCeilingCount, mesoCost, rankUpPossibility } from '../constant'
 
 /** 세 자리 마다 , 넣음 */
 export const addCommas = (number: number): string => {
